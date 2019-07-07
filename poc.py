@@ -156,8 +156,8 @@ class _Attacher(object):
 
         try:
             srv = self.maybe_launch_service(stream.target_address)
-        except Exception:
-            print("Unable to launch service for '{}'".format(stream.target_address))
+        except Exception as e:
+            print("Unable to launch service for '{}': {}".format(stream.target_address, e))
             try:
                 self._tor.attach_stream(stream.id, 0)
             except stem.UnsatisfiableRequest:
